@@ -56,12 +56,29 @@ class TranslationAnalysisService:
 
     def analyze(self, data: AnalysisInput) -> AnalysisResult:
         """
-        Orchestration complète de l'appel au modèle pour analyser une traduction.
+        Orchestration en deux appels LLM :
+        1) Analyse : score et liste des problèmes uniquement.
+        2) Suggestion : génération d'une traduction suggérée à partir de l'analyse.
         """
-        format_instructions = self._parser_service.get_format_instructions()
-        prompt = self._prompt_service.build_prompt(data, format_instructions)
-        raw = self._ollama_service.call(prompt)
-        return self._parser_service.parse(raw)
+        # Premier appel : analyse (score + issues uniquement)
+        format_analysis = self._parser_service.get_format_instructions_analysis()
+        prompt_analysis = self._prompt_service.build_prompt(data, format_analysis)
+        raw_analysis = self._ollama_service.call(prompt_analysis)
+        score, issues = self._parser_service.parse_analysis(raw_analysis)
+
+        # Deuxième appel : suggestion de traduction basée sur l'analyse
+        format_suggestion = self._parser_service.get_format_instructions_suggestion()
+        prompt_suggestion = self._prompt_service.build_suggestion_prompt(
+            data, format_suggestion, score, issues
+        )
+        raw_suggestion = self._ollama_service.call(prompt_suggestion)
+        suggested_translation = self._parser_service.parse_suggestion(raw_suggestion)
+
+        return AnalysisResult(
+            score=score,
+            issues=issues,
+            suggested_translation=suggested_translation,
+        )
 
 
 # instance partagée du service pour simplifier l'utilisation côté app

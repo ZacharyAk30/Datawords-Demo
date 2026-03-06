@@ -18,7 +18,7 @@ class Settings:
     def from_env(cls) -> "Settings":
         return cls(
             ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://ollama:11434"),
-            ollama_model=os.getenv("OLLAMA_MODEL", "llama3"),
+            ollama_model=os.getenv("OLLAMA_MODEL", "qwen3-coder:30b"),
             port=int(os.getenv("PORT", "5001")),
             debug=os.getenv("FLASK_DEBUG", "false").lower()
             in {"1", "true", "yes", "on"},
