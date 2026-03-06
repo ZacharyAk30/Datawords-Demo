@@ -1,5 +1,10 @@
 # Datawords-Demo
 
+<!-- Sur GitHub : glisser-déposer Datawords.mp4 dans l’éditeur pour que la vidéo s’affiche (URL d’asset générée). -->
+<video src="Datawords.mp4" controls width="100%"></video>
+
+*Si la vidéo ne s’affiche pas : [ouvrir Datawords.mp4](Datawords.mp4) directement.*
+
 ## Présentation du projet
 
 **Datawords-Demo** est une démo technique réalisée dans le cadre d’un assignment. Datawords Group accompagne plus de 1 500 marques internationales pour gérer leur contenu dans 25 pays et 75+ langues. L’entreprise mène une transformation stratégique portée par l’IA.
