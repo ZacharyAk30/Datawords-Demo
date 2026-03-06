@@ -10,28 +10,18 @@ export interface AnalyzeRequest {
   targetLanguage: string;
 }
 
-/** Réponse brute du backend (snake_case) */
-interface BackendIssue {
-  title: string;
-  level: string;
-  description: string;
-}
-
+/** Réponse brute du backend (alignée sur schemas.AnalysisResult) */
 interface BackendAnalysisResult {
   score: number;
-  issues: BackendIssue[];
+  issues: string[];
   suggested_translation: string;
 }
 
 function mapBackendToFrontend(backend: BackendAnalysisResult): AnalysisResult {
   return {
     score: backend.score,
-    issues: backend.issues.map((issue) => ({
-      title: issue.title,
-      description: issue.description,
-      severity: (issue.level ?? "medium") as "high" | "medium" | "low",
-    })),
-    suggestedTranslation: backend.suggested_translation,
+    issues: backend.issues ?? [],
+    suggestedTranslation: backend.suggested_translation ?? "",
   };
 }
 

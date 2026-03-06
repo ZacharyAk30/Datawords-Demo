@@ -19,6 +19,7 @@ class OllamaService:
             raw_response = client.chat(
                 model=settings.ollama_model,
                 messages=[{"role": "user", "content": prompt}],
+                format="json",
             )
         except Exception as exc:
             raise RuntimeError(f"Erreur de connexion à Ollama: {exc}") from exc

@@ -4,9 +4,10 @@ import { useState } from "react";
 import ScoreGauge from "./ScoreGauge";
 import IssueCard from "./IssueCard";
 
+/** Aligné sur le schéma backend (schemas.AnalysisResult) */
 export interface AnalysisResult {
   score: number;
-  issues: { title: string; description: string; severity: "high" | "medium" | "low" }[];
+  issues: string[];
   suggestedTranslation: string;
 }
 
@@ -42,7 +43,7 @@ const AnalysisResults = ({ result }: AnalysisResultsProps) => {
           <h3 className="text-lg font-display font-semibold text-foreground">Issues Detected</h3>
           <div className="space-y-3">
             {result.issues.map((issue, i) => (
-              <IssueCard key={i} index={i} {...issue} />
+              <IssueCard key={i} index={i} title="Issue" description={issue} severity="medium" />
             ))}
           </div>
         </div>

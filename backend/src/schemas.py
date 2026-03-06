@@ -14,26 +14,13 @@ class AnalysisInput:
     source_language: str = ""
     target_language: str = ""
 
-
-@dataclass
-class Issue:
-    """
-    Problème identifié dans la traduction.
-    """
-
-    title: str
-    level: str  # ex: "low", "medium", "high"
-    description: str
-
-
 @dataclass
 class AnalysisResult:
     """
     Résultat structuré renvoyé par le modèle d'analyse.
     """
-
     score: int
-    issues: List[Issue]
+    issues: List[str]
     suggested_translation: str
 
     def to_dict(self) -> dict:
@@ -42,7 +29,7 @@ class AnalysisResult:
         """
         return {
             "score": self.score,
-            "issues": [asdict(issue) for issue in self.issues],
+            "issues": self.issues,
             "suggested_translation": self.suggested_translation,
         }
 

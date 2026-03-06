@@ -41,6 +41,7 @@ def analyze() -> Any:
 
     try:
         analysis: AnalysisResult = translation_service.analyze(input_data)
+        print("analysis",analysis)
     except RuntimeError as exc:
         return jsonify({"error": str(exc)}), 502
 
