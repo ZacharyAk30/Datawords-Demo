@@ -29,11 +29,11 @@ const AnalysisResults = ({ result }: AnalysisResultsProps) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="space-y-8"
+      className="space-y-5 md:space-y-6 overflow-x-hidden break-words"
     >
       {/* Score */}
-      <div className="flex flex-col items-center py-6">
-        <h3 className="text-lg font-display font-semibold text-foreground mb-6">Translation Quality Score</h3>
+      <div className="flex flex-col items-center py-3 md:py-4">
+        <h3 className="text-base md:text-lg font-display font-semibold text-foreground mb-3 md:mb-4">Translation Quality Score</h3>
         <ScoreGauge score={result.score} />
       </div>
 
@@ -60,8 +60,8 @@ const AnalysisResults = ({ result }: AnalysisResultsProps) => {
           <Sparkles className="w-5 h-5 text-accent" />
           <h3 className="text-lg font-display font-semibold text-foreground">Suggested Translation</h3>
         </div>
-        <div className="relative rounded-lg border border-accent/30 bg-accent/5 p-5">
-          <p className="text-foreground leading-relaxed pr-10 italic font-display text-lg">
+        <div className="relative rounded-lg border border-accent/30 bg-accent/5 p-4 md:p-5">
+          <p className="text-foreground leading-relaxed pr-10 italic font-display text-base md:text-lg break-words">
             "{result.suggestedTranslation}"
           </p>
           <button

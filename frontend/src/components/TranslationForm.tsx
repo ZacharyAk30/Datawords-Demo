@@ -53,7 +53,7 @@ const TranslationForm = ({ onSubmit, isLoading }: TranslationFormProps) => {
       onSubmit={handleSubmit}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="space-y-6"
+      className="space-y-4 md:space-y-5 overflow-x-hidden"
     >
       {/* Language selectors */}
       <div className="flex items-center gap-3">
@@ -91,7 +91,7 @@ const TranslationForm = ({ onSubmit, isLoading }: TranslationFormProps) => {
           value={originalText}
           onChange={e => setOriginalText(e.target.value)}
           placeholder="Enter the original marketing text..."
-          className="min-h-[100px] bg-card resize-none"
+          className="min-h-[80px] md:min-h-[72px] max-h-[140px] md:max-h-[120px] bg-card resize-none overflow-y-auto"
         />
       </div>
 
@@ -104,7 +104,7 @@ const TranslationForm = ({ onSubmit, isLoading }: TranslationFormProps) => {
           value={translatedText}
           onChange={e => setTranslatedText(e.target.value)}
           placeholder="Enter the translation to evaluate..."
-          className="min-h-[100px] bg-card resize-none"
+          className="min-h-[80px] md:min-h-[72px] max-h-[140px] md:max-h-[120px] bg-card resize-none overflow-y-auto"
         />
       </div>
 
