@@ -1,11 +1,20 @@
 import json
-
 import requests
 
 
 def main() -> None:
-    url = "http://localhost:5001/analyze"
+    base_url = "http://localhost:5001"
 
+    # 1) Vérifier que le backend Flask tourne
+    try:
+        health = requests.get(f"{base_url}/health", timeout=5)
+        print(f"/health -> {health.status_code} {health.text}")
+    except requests.RequestException as exc:
+        print(f"❌ Backend injoignable: {exc}")
+        return
+
+    # 2) Appeler /analyze
+    url = f"{base_url}/analyze"
     payload = {
         "original_text": "Unleash your wild side with our new luxury fragrance.",
         "translated_text": "Libérez votre côté sauvage avec notre nouveau parfum de luxe.",
@@ -33,4 +42,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
