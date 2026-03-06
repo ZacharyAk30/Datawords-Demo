@@ -1,11 +1,4 @@
 # Datawords-Demo
-
-<!-- Sur GitHub : glisser-déposer Datawords.mp4 dans l’éditeur pour que la vidéo s’affiche (URL d’asset générée). -->
-<figure class="video_container">
-  <iframe src="Datawords.mp4" frameborder="0" allowfullscreen="true"> 
-</iframe>
-</figure>
-
 ![Demo](Datawords.gif)
 
 *Si la vidéo ne s’affiche pas : [ouvrir Datawords.mp4](Datawords.mp4) directement.*
