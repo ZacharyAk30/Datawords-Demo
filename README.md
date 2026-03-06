@@ -106,16 +106,3 @@ issues
 suggested_translation
 ```
 ---
-## LLM Prompt
-```
-You are an expert in marketing localization.
-Compare the original marketing text and its translation.
-Evaluate:
-- translation accuracy
-- brand tone alignment
-- marketing effectiveness
-Return:
-1. Translation score (0-100)
-2. Issues detected
-3. Suggested improved translation
-```

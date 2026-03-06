@@ -1,6 +1,7 @@
 from typing import Any, Dict
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from src.config import settings
 from src.schemas import AnalysisResult
@@ -8,6 +9,7 @@ from src.services.analyse_translation_service import translation_service
 
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/health", methods=["GET"])
@@ -18,11 +20,13 @@ def health() -> Any:
 @app.route("/analyze", methods=["POST"])
 def analyze() -> Any:
     """
-    Corps attendu (JSON) :
+    Corps attendu (JSON), snake_case ou camelCase (frontend) :
     {
-      "original_text": "...",
-      "translated_text": "...",
-      "brand_tone": "Luxury / Elegant"
+      "original_text" / "originalText": "...",
+      "translated_text" / "translatedText": "...",
+      "brand_tone" / "brandTone": "Luxury / Elegant",
+      "source_language" / "sourceLanguage": "en" (optionnel),
+      "target_language" / "targetLanguage": "fr" (optionnel)
     }
     """
     try:

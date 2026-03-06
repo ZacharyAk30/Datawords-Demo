@@ -25,13 +25,16 @@ class TranslationAnalysisService:
     def validate_payload(self, payload: Dict[str, Any]) -> AnalysisInput:
         """
         Valide le payload JSON brut et renvoie un objet d'entrée structuré.
+        Accepte snake_case (original_text) ou camelCase (originalText) pour le frontend.
         Lève ValueError avec un dictionnaire d'erreurs si nécessaire.
         """
         errors: Dict[str, str] = {}
 
-        original = (payload.get("original_text") or "").strip()
-        translated = (payload.get("translated_text") or "").strip()
-        brand_tone = (payload.get("brand_tone") or "").strip()
+        original = (payload.get("original_text") or payload.get("originalText") or "").strip()
+        translated = (payload.get("translated_text") or payload.get("translatedText") or "").strip()
+        brand_tone = (payload.get("brand_tone") or payload.get("brandTone") or "").strip()
+        source_language = (payload.get("source_language") or payload.get("sourceLanguage") or "").strip()
+        target_language = (payload.get("target_language") or payload.get("targetLanguage") or "").strip()
 
         if not original:
             errors["original_text"] = "Le texte original est obligatoire."
@@ -47,6 +50,8 @@ class TranslationAnalysisService:
             original_text=original,
             translated_text=translated,
             brand_tone=brand_tone,
+            source_language=source_language,
+            target_language=target_language,
         )
 
     def analyze(self, data: AnalysisInput) -> AnalysisResult:

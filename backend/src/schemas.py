@@ -11,6 +11,8 @@ class AnalysisInput:
     original_text: str
     translated_text: str
     brand_tone: str
+    source_language: str = ""
+    target_language: str = ""
 
 
 @dataclass

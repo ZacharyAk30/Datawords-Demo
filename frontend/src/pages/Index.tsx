@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Globe, Sparkles } from "lucide-react";
 import TranslationForm from "@/components/TranslationForm";
 import AnalysisResults, { type AnalysisResult } from "@/components/AnalysisResults";
-import { analyzeTranslation } from "@/lib/mockAnalysis";
+import { analyzeTranslation } from "@/lib/analysisApi";
 
 const Index = () => {
   const [result, setResult] = useState<AnalysisResult | null>(null);

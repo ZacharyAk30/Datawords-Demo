@@ -35,7 +35,7 @@ class _AnalysisModel(BaseModel):
         description="List of issues identified in the translation."
     )
     suggested_translation: str = Field(
-        description="Improved translation proposed by the model. Must be in the same language as the translated text."
+        description="Improved translation proposed by the model. Must be in the Target language"
     )
 
 
