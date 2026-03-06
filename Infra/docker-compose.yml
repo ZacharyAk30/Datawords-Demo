@@ -41,11 +41,11 @@ services:
     ports:
       - "5001:5001"
 
-  front:
+  frontend:
     build:
       context: ..
-      dockerfile: Infra/front.Dockerfile
-    container_name: front
+      dockerfile: Infra/frontend.Dockerfile
+    container_name: frontend
     environment:
       - VITE_API_URL=http://backend:5001
     depends_on:
